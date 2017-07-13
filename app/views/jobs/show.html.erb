@@ -11,3 +11,7 @@ City: <%= @job.city %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+<br /><br />
+
+<%= link_to "<<back to #{@job.company.name}'s jobs", company_jobs_path(@job.company) %>
