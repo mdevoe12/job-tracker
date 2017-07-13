@@ -2,9 +2,8 @@ require 'spec_helper'
 
 RSpec.feature "User can edit an existing job" do
   scenario "by clicking on edit from job page" do
-    company = Company.create(name: "e-corop")
-    job = Job.create(title: "engineer", level_of_interest: 5,
-          city: "Denver", company_id: company.id)
+    company = create(:company)
+    job = create(:job, company_id: company.id)
 
     visit edit_company_job_path(company, job)
     fill_in "job_title", with: "changed title"
