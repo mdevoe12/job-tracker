@@ -1,7 +1,7 @@
 <h1> All Categories </h1>
 
 <% @categories.each do |cat| %>
-  <li><%= cat.title %>
+  <li><%=link_to cat.title, category_path(cat) %>
   <%= link_to "delete", category_path(cat.id), method: :delete %>
   <%= link_to "edit", edit_category_path(cat) %></li>
 <% end %>
