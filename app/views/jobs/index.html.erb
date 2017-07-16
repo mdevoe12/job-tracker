@@ -4,4 +4,14 @@ All Jobs for <strong><%= @company.name %></strong>
   <ul>  <%=link_to job.title, company_job_path(@company, job) %> at <%= job.company.name %></ul>
 <% end %>
 
+  <br /><br />
+
+<%= render partial: 'companies/contact' %>
+
+  <br /><br />
+
+<%= render partial: 'contacts/form' %>
+
+  <br /><br />
+
 <%= link_to "<< back to companies", companies_path %>

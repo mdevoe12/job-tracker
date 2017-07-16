@@ -1,0 +1,17 @@
+<h3> <%=@company.name%>'s contacts: </h3>
+
+
+<table>
+  <tr>
+    <th> Name </th>
+    <th> Position </th>
+    <th> E-mail </th>
+  </tr>
+  <% @company.contacts.each do |contact| %>
+    <tr>
+      <th><%= contact.full_name %></th>
+      <th><%= contact.position %></th>
+      <th><%= contact.email %></th>
+    </tr>
+  <% end %>
+</table>
