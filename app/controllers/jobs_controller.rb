@@ -48,6 +48,29 @@ class JobsController < ApplicationController
     redirect_to company_jobs_path(@job.company)
   end
 
+  def sort
+      if params[:location] != nil
+        @jobs = Job.where(city: params[:location])
+      elsif params[:sort] == "interest"
+        @jobs = Job.order(:level_of_interest)
+        render :interest
+      else
+        @jobs = Job.where(city: params[:sort])
+      end
+  end
+
+
+  def dashboard
+    @job_interest = Job.order(:level_of_interest).group(:level_of_interest).count
+    @company_interest = Job.joins(:company).group(:company)
+                                 .average(:level_of_interest)
+                                 .transform_values{|v| v.to_i}
+                                 .sort_by{|k, v| v}
+                                 .reverse.shift(3).to_h
+    @job_count = Job.order(:city).group(:city).count
+
+  end
+
   private
 
   def job_params

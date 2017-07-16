@@ -5,7 +5,11 @@ FactoryGirl.define do
       "job #{t}"
     end
     description "super descrip"
-    level_of_interest 30
+
+    sequence :level_of_interest do |t|
+      t
+    end
+    
     company
     city "city of dreams"
     category

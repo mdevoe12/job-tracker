@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :categories
 
-
-
   resources :companies do
     resources :contacts
     resources :jobs do
@@ -10,4 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'jobs' => 'jobs#sort', as: :jobsort
+  get 'dashboard' => 'jobs#dashboard', as: :jobdashboard
 end

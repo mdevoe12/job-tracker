@@ -1,0 +1,40 @@
+<h1> Welcome to your dashboard! </h1>
+
+<h3> Job count by interest level </h3>
+  <table>
+    <tr>
+      <th> Level of Interest </th>
+      <th> Job Count </th>
+    </tr>
+    <% @job_interest.each do |k, v| %>
+    <tr>
+      <th><%=k%></th>
+      <th><%=v%></th>
+    </tr>
+    <% end %>
+  </table>
+
+<br /><br />
+
+<h3> Top 3 companies by interest level <h3>
+  <p>
+  <% @company_interest.each do |k, v| %>
+    <ul><%=k.name%> - Avg. Interest Level: <%=v%></ul>
+    <%end%>
+  </p>
+
+<br /><br />
+
+<h3> Job count by location: </h3>
+  <table>
+    <tr>
+      <th> City </th>
+      <th> Job Count </th>
+    </tr>
+    <% @job_count.each do |k, v| %>
+    <tr>
+      <th><%= link_to k, "/jobs?location=#{k}" %> </th>
+      <th><%=v%></th>
+    </tr>
+    <% end %>
+  </table>
